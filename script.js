@@ -8,8 +8,6 @@
 const main = document.querySelector('main');
 const input = document.querySelector('input')
 
-
-
 function generatePage(data) {
     data.forEach(e => {
         const card = document.createElement('div');
