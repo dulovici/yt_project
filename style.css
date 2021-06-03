@@ -1,0 +1,58 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+header img {
+    width: 100px;
+}
+
+main {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+}
+.player {
+    position: absolute;
+    left: 32%;
+    top: 18%;
+    width: 600px;
+    height: 400px;
+
+}
+.hide {
+    display: none;
+}
+.wraper {
+    width: 1700px;
+    margin: auto;
+    margin-bottom: 30px;
+    
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    margin-top: 20px;
+    border: 1px solid black;
+    padding: 10px;
+    margin-left: 60px;
+}
+.card img {
+    width: 300px;
+    margin: auto;
+    margin-top: 10px;
+}
+.card h2 {
+    margin-top: 20px;
+}
+.card p {
+    margin-top: 10px;
+}
