@@ -18,6 +18,10 @@ main {
     display: flex;
     flex-wrap: wrap;
 }
+.next {
+    margin-top: 20px;
+    height: 20px;
+}
 .player {
     position: absolute;
     left: 32%;

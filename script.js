@@ -6,7 +6,10 @@
 
 
 const main = document.querySelector('main');
-const input = document.querySelector('input')
+const input = document.querySelector('input');
+const next = document.querySelector('.next');
+
+
 
 //GETTING DATA FROM API
 function getData() {
@@ -47,7 +50,7 @@ function generatePage(apiData) {
     })
 }
 
-              //=======EVENTS========//
+//=======EVENTS========//
 input.addEventListener("keydown", function (e) {
     if (e.keyCode === 13) {
         main.innerHTML = '';
