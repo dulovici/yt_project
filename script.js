@@ -22,8 +22,8 @@ function getData() {
     req.onload = function () {
         const data = JSON.parse(req.responseText).items;
         console.log(data);
-
-        generatePage(data);
+        if (data.length === numOfCards) generatePage(data);
+        else generatePage(data.splice(data.length - numOfCards, data.length));
     }
 }
 
@@ -58,7 +58,7 @@ input.addEventListener("keydown", function (e) {
     if (e.keyCode === 13) {
         main.innerHTML = '';
         getData();
-        input.value = '';
+        // input.value = '';
     }
 })
 
