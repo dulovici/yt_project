@@ -15,10 +15,13 @@ let inputValue = '';
 
 input.addEventListener("keydown", function (e) {
     if (e.keyCode === 13) {
+        // save value to local variable in order to continue search with empty input string
+        inputValue = input.value;
+		input.value = '';
+		
         // renderData();
         renderDataTest();
 
-        inputValue = input.value;
         button.style.visibility = "visible";
     }
 })
