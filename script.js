@@ -7,14 +7,17 @@
 
 const main = document.querySelector('main');
 const input = document.querySelector('input');
-const next = document.querySelector('.next');
+const nextBtn = document.querySelector('.next');
+
+const numOfCards = 12;
+let currentNumOfCards = 12;
 
 
 
 //GETTING DATA FROM API
 function getData() {
     const req = new XMLHttpRequest();
-    req.open('GET', `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=12&q=${input.value}&key=AIzaSyDSXjGS5-H-o6Dn7e1DWrh3mfho7HAZ1n4`);
+    req.open('GET', `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=${currentNumOfCards}&q=${input.value}&key=AIzaSyDSXjGS5-H-o6Dn7e1DWrh3mfho7HAZ1n4`);
     req.send();
     req.onload = function () {
         const data = JSON.parse(req.responseText).items;
@@ -57,6 +60,13 @@ input.addEventListener("keydown", function (e) {
         getData();
         input.value = '';
     }
+})
+
+nextBtn.addEventListener('click', function (e) {
+    main.innerHTML = '';
+    currentNumOfCards += numOfCards;
+    getData();
+
 })
 
 document.addEventListener('keydown', function (e) {
