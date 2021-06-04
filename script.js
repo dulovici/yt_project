@@ -8,8 +8,22 @@
 const main = document.querySelector('main');
 const input = document.querySelector('input')
 
-function generatePage(data) {
-    data.forEach(e => {
+//GETTING DATA FROM API
+function getData() {
+    const req = new XMLHttpRequest();
+    req.open('GET', `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=12&q=${input.value}&key=AIzaSyDSXjGS5-H-o6Dn7e1DWrh3mfho7HAZ1n4`);
+    req.send();
+    req.onload = function () {
+        const data = JSON.parse(req.responseText).items;
+        console.log(data);
+
+        generatePage(data);
+    }
+}
+
+//CREATING HTML FROM RECIVED DATA
+function generatePage(apiData) {
+    apiData.forEach(e => {
         const card = document.createElement('div');
         card.setAttribute('class', 'card');
         const img = document.createElement('img');
@@ -33,18 +47,7 @@ function generatePage(data) {
     })
 }
 
-function getData() {
-    const req = new XMLHttpRequest();
-    req.open('GET', `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=12&q=${input.value}&key=AIzaSyDSXjGS5-H-o6Dn7e1DWrh3mfho7HAZ1n4`);
-    req.send();
-    req.onload = function () {
-        const data = JSON.parse(req.responseText).items;
-        generatePage(data);
-
-        console.log(data);
-    }
-}
-
+              //=======EVENTS========//
 input.addEventListener("keydown", function (e) {
     if (e.keyCode === 13) {
         main.innerHTML = '';
