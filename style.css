@@ -17,14 +17,22 @@ main {
     display: flex;
     flex-wrap: wrap;
 }
+section {
+    display: flex;
+    justify-content: center;
+}
+.logo {
+    cursor: pointer;
+}
 .next {
     margin-top: 20px;
     height: 20px;
 }
 .player {
-    position: absolute;
+    /* position: absolute;
     left: 32%;
-    top: 18%;
+    top: 18%; */
+    margin-top: 30px;
     width: 600px;
     height: 400px;
 
@@ -43,11 +51,14 @@ main {
     display: flex;
     flex-direction: column;
     width: 350px;
+    height: 470px;
     margin-top: 20px;
     border: 2px solid black;
     padding: 10px;
     margin-left: 60px;
     background-color: rgb(236, 236, 236);
+    cursor: pointer;
+    overflow: hidden;
 }
 .card img {
     width: 300px;

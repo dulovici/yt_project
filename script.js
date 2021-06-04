@@ -6,10 +6,13 @@
 
 (function () {
     'use strict'
-
+    const key = 'AIzaSyDSXjGS5-H-o6Dn7e1DWrh3mfho7HAZ1n4';
+    const header = document.querySelector('header');
     const main = document.querySelector('main');
+    const logo = document.querySelector('.logo');
     const input = document.querySelector('input');
     const nextBtn = document.querySelector('.next');
+    const videoSec = document.querySelector('section');
     let inputValue;
 
     //PARAMETARS FOR NUMBER & CHOISE OF CARDS
@@ -18,10 +21,18 @@
 
 
 
+
+
+
     //GETTING DATA FROM API
-    function getData() {
+
+    function getData(id) {
+        //API LINKS
+        const initialData = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=${currentNumOfCards}&q=${inputValue}&key=${key}`;
+        const relatedVideos = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=12&relatedToVideoId=${id}&key=${key}&type=video`;
+
         const req = new XMLHttpRequest();
-        req.open('GET', `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=${currentNumOfCards}&q=${inputValue}&key=AIzaSyDSXjGS5-H-o6Dn7e1DWrh3mfho7HAZ1n4`);
+        req.open('GET', id ? relatedVideos : initialData);
         req.send();
         req.onload = function () {
             const data = JSON.parse(req.responseText).items;
@@ -51,8 +62,11 @@
             card.append(h2);
             card.append(par)
 
-            card.addEventListener('click', function (e) {
-                main.append(video)
+            card.addEventListener('click', function () {
+                videoSec.innerHTML = '';
+                main.innerHTML = '';
+                videoSec.append(video)
+                getData(e.id.videoId)
             })
         })
     }
@@ -60,10 +74,12 @@
     //=======EVENTS========//
     input.addEventListener("keydown", function (e) {
         if (e.keyCode === 13) {
-            main.innerHTML = '';
             inputValue = input.value;
+            main.innerHTML = '';
             getData();
             input.value = '';
+
+            nextBtn.classList.remove('hide')
         }
     })
 
@@ -80,8 +96,11 @@
             player.classList.add('hide')
         }
     })
-
-
+    logo.addEventListener('click', function () {
+        videoSec.innerHTML = '';
+        main.innerHTML = '';
+        nextBtn.classList.add('hide')
+    })
 
 })()
 
