@@ -3,7 +3,6 @@
     margin: 0;
 }
 
-
 header {
     display: flex;
     justify-content: space-between;
@@ -17,6 +16,10 @@ main {
     position: relative;
     display: flex;
     flex-wrap: wrap;
+}
+.next {
+    margin-top: 20px;
+    height: 20px;
 }
 .player {
     position: absolute;
